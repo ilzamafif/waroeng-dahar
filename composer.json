@@ -1,0 +1,16 @@
+{
+    "name": "waroengdahar/waroeng-dahar",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Waroengdahar\\WaroengDahar\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ilzamafif",
+            "email": "ilzamafif27@gmail.com"
+        }
+    ],
+    "require": {}
+}
