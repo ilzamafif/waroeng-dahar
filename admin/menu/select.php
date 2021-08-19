@@ -68,7 +68,7 @@ $rows = $db->getAll("SELECT * FROM tblkategori ORDER BY kategori ASC");
                     <?= $data['harga'] ?>
                   </td>
                   <td>
-                    <img src="../images/<?= $data['gambar'] ?>" width="150px">
+                    <img src="../frontend/images/data/<?= $data['gambar'] ?>" width="150px">
                   </td>
                   <td>
                     <form action="" method="post">

@@ -4,7 +4,7 @@ if (isset($_GET['id'])) {
   $id = $_GET['id'];
 }
 
-$row = $db->getAll("SELECT * FROM tblorderdetail o inner join tblmenu p on o.idmenu = p.idmenu  where idorder =" . $_GET['id']);
+$row = $db->getAll("SELECT * FROM tblorderdetail INNER JOIN tblmenu ON tblorderdetail.idmenu = tblmenu.idmenu where idorder =" . $_GET['id']);
 $sumItem = $db->getAll("SELECT SUM(jumlah * hargajual) AS sum FROM tblorderdetail where idorder =" . $_GET['id']);
 $rows = $db->getAll("SELECT * FROM vorder WHERE idorder = $id");
 foreach ($rows as $r) {
@@ -62,12 +62,16 @@ foreach ($rows as $r) {
               </tr>
           </tbody>
         </table>
-        <a href="../select.php?id=<?= $data['idorder'] ?>" target="_blank" class="btn btn-secondary float-right btn-sm ml-3">Cetak</a>
+        <a href="print.php?id=<?= $data['idorder'] ?>" target="_blank" class="btn btn-secondary float-right btn-sm ml-3">Cetak</a>
         <?php if ($r['status'] == 0) : ?>
           <a href="?f=order&m=update&status=<?= $status ?>&id=<?= $data['idorder'] ?>" class="btn btn-danger float-right btn-sm">Update pembayaran</a>
         <?php elseif ($r['status'] == 1) : ?>
           <button class="btn btn-success float-right btn-sm">Pembayaran Oke</button>
         <?php endif; ?>
+      <?php else: ?>
+        <tr>
+          <td colspan="6" class="text-center">Data Kosong</td>
+        </tr>
       <?php endif; ?>
       </div>
     </div>

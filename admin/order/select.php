@@ -102,9 +102,9 @@ $awalData = ($jumlahDataPerHalaman * $halamanAktif) - $jumlahDataPerHalaman;
                 <td colspan="2" class="text-center">Rp. <?= number_format($sum['sum'], 2, ',', '.') ?></td>
                 <td>
                   <?php if (!isset($_POST['filter'])) : ?>
-                    <a class="btn btn-info btn-sm" href="../cetak_order.php" target="_blank">Catak Semua Order</a>
+                    <a class="btn btn-info btn-sm" href="print_all.php" target="_blank">Catak Semua Order</a>
                   <?php else : ?>
-                    <a class="btn btn-danger btn-sm" href="../cetak_order.php?dariTgl=<?= $tgl_dari ?>&smpTgl=<?= $tgl_sampai ?>" target="_blank">Catak Semua Order</a>
+                    <a class="btn btn-danger btn-sm" href="print_all.php?dariTgl=<?= $tgl_dari ?>&smpTgl=<?= $tgl_sampai ?>" target="_blank">Catak Semua Order</a>
                   <?php endif; ?>
                 </td>
               </tr>

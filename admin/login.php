@@ -11,8 +11,9 @@ if (isset($_POST["login"])) {
   $email = $_POST["email"];
   $password = $_POST["password"];
 
-  $count = $db->rowCount("SELECT * FROM tbluser WHERE email = '$email' AND password = '$password'");
-  
+  $sql = "SELECT * FROM tbluser WHERE email = '$email' AND password = '$password'";
+
+  $count = $db->rowCount($sql);
   if ($count == 0) {
     Flasher::setFlash('Email atau passoword', 'tidak sesuai', 'warning');
   } else {
@@ -38,7 +39,7 @@ if (isset($_POST["login"])) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Halaman Login</title>
 
-  <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
+  <?php include('./includes/styles.php'); ?>
 
 </head>
 

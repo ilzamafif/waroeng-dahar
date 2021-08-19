@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
     echo "gambar kososng";
   } else {
     $sql = "INSERT INTO `tblmenu` VALUES ('', $id, '$menu', '$gambar', $harga);";
-    move_uploaded_file($temp, '../images/' . $gambar);
+    move_uploaded_file($temp, '../frontend/images/data/' . $gambar);
     $db->runSql($sql);
     Flasher::setFlash('berhasil', 'ditambahkan', 'success');
 
