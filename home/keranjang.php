@@ -75,7 +75,7 @@ function keranjang()
                           echo '<div class="row bg-white border rounded py-3 my-2">';
 
                             echo '<div class="col-md-6">';
-                            echo '<img src="./images/' . $r['gambar'] . '" class="img-fluid" alt="'. $r['gambar'] .'" width: 100%;>';
+                            echo '<img src="./frontend/images/data/' . $r['gambar'] . '" class="img-fluid" alt="'. $r['gambar'] .'" width: 100%;>';
                             echo '</div>';
 
                             echo '<div class="col-md-6">';

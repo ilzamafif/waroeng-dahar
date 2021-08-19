@@ -1,5 +1,6 @@
 <?php
-require_once "./dbcontroller.php";
+require_once "./Data/Database.php";
+
 $db = new DB;
 
 if (isset($_POST["login"])) {

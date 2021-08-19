@@ -48,10 +48,10 @@ function cart()
   <meta name="keywords" content="Waroeng Dahar">
   <meta name="description" content="Website jual makanan, food ordering, POS, ">
   <title>Waroeng Dahar</title>
-  <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
-  <link rel="icon" href="./images/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="./frontend/images/favicon/favicon.png" type="image/x-icon">
+  <link rel="icon" href="./frontend/images/favicon/favicon.png" type="image/x-icon">
   <link rel="manifest" href="manifest.json">
-  <link rel="apple-touch-icon" href="./images/icons/icon-192x192.png">
+  <link rel="apple-touch-icon" href="./frontend/images/icons/icon-192x192.png">
   <meta name="theme-color" content="#3074FF"/>
 
   <!-- bootstrap link file -->
@@ -63,58 +63,24 @@ function cart()
 </head>
 
 <body>
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <a class="logo text-decoration-none text-dark" href="index.php">
-        <h4 class="font-weight-bold">Waroeng Dahar</h4>
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" href="#">Waroeng Dahar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item ">
-            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
-          </li>
+      <div class="collapse navbar-collapse me-auto" id="navbarNav">
+        <ul class="navbar-nav">
           <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+           <li class="nav-item">
             <a class="nav-link" href="?f=home&m=keranjang">
               <span style="font-size: 20px; color: gold;">
                 <i class="fas fa-shopping-cart"></i>
               </span>
               <span id="cart_count" class="bg-dark px-2 text-warning"><?= cart(); ?></span>
             </a>
-          </li>
-          <?php if (isset($_SESSION['pelanggan'])) : ?>
-            <li class="nav-item">
-              <a class="nav-link" href="?log=logout">
-                <?php
-                echo "Welcome  " . $_SESSION['pelanggan'];
-                ?>
-                <i class="fas fa-sign-out-alt fa-fw mr-2 text-gray-600"></i>
-              </a>
-            </li>
-          <?php else : ?>
-            <li class="nav-item">
-              <i class="fas fa-user-cart"></i>
-            </li>
-          <?php endif; ?>
-
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Waroeng Dahar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse ms-auto" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
           <?php if (isset($_SESSION['pelanggan'])) : ?>
             <li class="nav-item">
