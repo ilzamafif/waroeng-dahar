@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
 
   if (!empty($temp)) {
     $gambar = $_FILES['gambar']['name'];
-    move_uploaded_file($temp, '../frontend/images/data/' . $gambar);npm ins
+    move_uploaded_file($temp, '../frontend/images/data/' . $gambar);
   }
 
 

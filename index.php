@@ -63,7 +63,9 @@ function cart()
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <!-- section navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#">Waroeng Dahar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,22 +74,20 @@ function cart()
       <div class="collapse navbar-collapse me-auto" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+             <a class="nav-link" href="?f=home&m=keranjang">
+              <i class="fas fa-user"></i>
+            </a>
           </li>
            <li class="nav-item">
             <a class="nav-link" href="?f=home&m=keranjang">
-              <span style="font-size: 20px; color: gold;">
-                <i class="fas fa-shopping-cart"></i>
-              </span>
+              <i class="fas fa-shopping-cart"></i>
               <span id="cart_count" class="bg-dark px-2 text-warning"><?= cart(); ?></span>
             </a>
           </li>
           <?php if (isset($_SESSION['pelanggan'])) : ?>
             <li class="nav-item">
               <a class="nav-link" href="?log=logout">
-                <?php
-                echo "Welcome  " . $_SESSION['pelanggan'];
-                ?>
+                <?php // echo "Welcome  " . $_SESSION['pelanggan'];?>
                 <i class="fas fa-sign-out-alt fa-fw mr-2 text-gray-600"></i>
               </a>
             </li>
@@ -100,6 +100,7 @@ function cart()
       </div>
     </div>
   </nav>
+  <!-- section navbar end -->
 
   <div class="row mt-3">
     <div class="col-lg-6">
@@ -107,29 +108,15 @@ function cart()
     </div>
   </div>
 
-  <?php if (!empty($row)) : ?>
-
-    <!-- <ul class="nav flex-column">
-      <?php foreach ($row as $r) : ?>
-        <li class="nav-item"><a href="?f=home&m=product&id=<?= $r['idkategori']; ?>"><?= $r['kategori']; ?></a></li>
-      <?php endforeach; ?>
-    </ul> -->
-
-  <?php endif; ?>
-
-
-
   <?php
-
-  if (isset($_GET['f']) && isset($_GET['m'])) {
-    $f = $_GET['f'];
-    $m = $_GET['m'];
-    $file = $f . '/' . $m . '.php';
-    require_once $file;
-  } else {
-    require_once "home/product.php";
-  }
-
+    if (isset($_GET['f']) && isset($_GET['m'])) {
+      $f = $_GET['f'];
+      $m = $_GET['m'];
+      $file = $f . '/' . $m . '.php';
+      require_once $file;
+    } else {
+      require_once "home/product.php";
+    }
   ?>
 
   <script src="./frontend/scripts/main.js"></script>

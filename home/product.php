@@ -4,9 +4,9 @@ $row = $db->getAll("SELECT * FROM tblmenu");
 
 <header>
   <div class="hero">
-    <h1 class="tagline">Welcome To Waroeng Dahar</h1>
-    <p class="tagline-2">Menyediakan makanan dan minuman dengan berbagai macam rasa</p>
-    <a href="#main" class="btn btn-outline-primary mx-auto btn-order ">Order Now</a>
+    <h1 class="title">Welcome To Waroeng Dahar</h1>
+    <p class="tagline">Menyediakan makanan dan minuman dengan berbagai macam rasa</p>
+    <!-- <a href="#main" class="btn btn-outline-primary mx-auto btn-order ">Order Now</a> -->
   </div>
 </header>
 
@@ -17,10 +17,10 @@ $row = $db->getAll("SELECT * FROM tblmenu");
         <?php if (!empty($row)) : ?>
           <?php $i = 1;
           foreach ($row as $data) : ?>
-            <div class="col-md-4 col-sm-6 my-3 col-lg-3">
-              <div class="card shadow mb-3 pt-3">
+            <div class="my-3 col-sm-6 col-md-3 col-lg-2">
+              <div class="card shadow">
                 <div>
-                  <img src="./frontend/images/data/<?= $data['gambar'] ?>" class="img-fluid card-img-top" style="height:250px" alt="<?= $data['menu'] ?>">
+                  <img src="./frontend/images/data/<?= $data['gambar'] ?>" class="img-fluid card-img-top" alt="<?= $data['menu'] ?>">
                 </div>
                 <div class="card-body">
                   <h5 class="card-title"><?= $data['menu'] ?></h5>
@@ -32,7 +32,6 @@ $row = $db->getAll("SELECT * FROM tblmenu");
                     <i class="fas fa-star-half-alt"></i>
                   </span>
                   <h5>
-                    <!-- <small><s class="text-secondary">10%</s></small> -->
                     <span class="price"><?php echo number_format($data['harga'], 2); ?></span>
                   </h5>
                   <a href="?f=home&m=keranjang&id=<?= $data['idmenu'] ?>" type="submit" name="add" class="btn btn-outline-success btn-sm my-2 mr-2"><i class="fas fa-shopping-cart"></i> add cart </a>
@@ -48,55 +47,49 @@ $row = $db->getAll("SELECT * FROM tblmenu");
   </div>
 </main>
 
-<footer>
-  <p>Copyright © 2021 | Waroeng Dahar</p>
-</footer>
-
-<!-- <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Menu <?= $data['menu'] ?></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-           <span class="fa fa-arrow-righ t"></span>
-        </button>
-      </div>
-      <div class="modal-body">
-
-              <?php
-                $id = $data['idmenu'];
-                var_dump($id);
-                $s = $db->getAll("SELECT * FROM tblmenu WHERE idmenu = $id"); 
-              ?>                          
-
-
-        <div class="row justify-content-center">
-          <div class="col-md-5 mr-3">
-            <img src="./images/<?= $s[0]['gambar'] ?>" class="img-fluid card-img-top" style="height:100%">
+<footer class="section-footer mt-5 mb-4 border-top">
+  <div class="container pt-5 pb-5">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12 col-lg-3">
+            <h5>Perusahaan</h5>
+            <ul>
+              <li><a href="#">Tentang</a></li>
+              <li><a href="#">Produk</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
           </div>
-          <div class="col-md-5">
-            <h5 class="card-title"><?= $s[0]['menu'] ?></h5>
-              <span style="font-size: 20px; color: gold;">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-              </span>
-              <h5>
-                <small><s class="text-secondary">10%</s></small>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente non debitis quia culpa dolor, expedita reprehenderit impedit alias nobis, dolorem suscipit magnam neque? Ea, ab. Ex doloribus suscipit tenetur placeat repellat, pariatur voluptatem omnis molestiae modi quisquam, labore sapiente velit?</p>
-                <span class="price"><?php echo number_format($s[0]['harga'], 2); ?></span>
-              </h5>
+          <div class="col-12 col-lg-3">
+            <h5>Gabung</h5>
+            <ul>
+              <li><a href="#">Mitra Driver</a></li>
+              <li><a href="#">Mitra Usaha</a></li>
+            </ul>
+          </div>
+          <div class="col-12 col-lg-3">
+            <h5>Hubungi Kami</h5>
+            <ul>
+              <li><a href="#">Bantuan</a></li>
+              <li><a href="#">Kontak</a></li>
+            </ul>
+          </div>
+          <div class="col-12 col-lg-3">
+            <h5>Carrer</h5>
+            <ul>
+              <li><a href="#">Pelajar</a></li>
+              <li><a href="#">Profesional</a></li>
+            </ul>
           </div>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <a href="?f=home&m=keranjang&id=<?= $data['idmenu'] ?>" type="submit" name="add" class="btn btn-outline-success mr-3"><i class="fas fa-shopping-cart"></i> add cart
-          <span class="iconify" data-icon="ei-cart" data-inline="false"></span>
-        </a>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row border-top justify-content-center pt-4">
+      <div class="col-auto text-gray-500 font-wight-light">
+        2021 Copyright Banyu Bening | All Right Resserved | Made In Indonesia
       </div>
     </div>
   </div>
-</div> -->
+</footer>
