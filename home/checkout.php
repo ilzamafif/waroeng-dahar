@@ -85,36 +85,3 @@ function hapusSession()
     }
   }
 }
-
-function info()
-{
-  echo '<body class="mt-5">';
-  echo '<div class="row justify-content-center">';
-  echo '<div class="col-md-6 p-4">';
-  echo '<div class="card o-hidden border-0 shadow-lg  p-5 my-5">';
-  echo '<div class="<div class="card-body">';
-
-  echo '<div class="form-group mb-3">';
-  echo '<label for="nama">Nama</label>';
-  echo '<input type="text" name="nama" class="form-control" value="' . $_SESSION['pelanggan'] . '" id="nama">';
-  echo '</div>';
-
-  echo '<div class="form-group mb-3">';
-  echo '<label for="nama">Alamat</label>';
-  echo '<input type="text" name="nama" class="form-control" value="' . $_SESSION['alamat'] . '" id="nama">';
-  echo '</div>';
-
-  echo '<div class="form-group mb-3">';
-  echo '<label for="nama">No Telepon</label>';
-  echo '<input type="text" name="nama" class="form-control" value="' . $_SESSION['telp'] . '" id="nama">';
-  echo '</div>';
-
-  echo '<a href="?f=home&m=history" class="btn btn-primary" type="submit" name="insert">Histori</a>';
-  echo '</div>';
-  echo '</div>';
-  echo '</div>';
-  echo '</div>';
-  echo '</body>';
-
-  // hapusSession();
-}

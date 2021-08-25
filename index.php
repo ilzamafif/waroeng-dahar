@@ -65,23 +65,23 @@ function cart()
 <body>
 
   <!-- section navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow">
     <div class="container">
       <a class="navbar-brand" href="#">Waroeng Dahar</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse me-auto" id="navbarNav">
-        <ul class="navbar-nav">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-             <a class="nav-link" href="?f=home&m=keranjang">
+             <a class="nav-link" href="">
               <i class="fas fa-user"></i>
             </a>
           </li>
            <li class="nav-item">
             <a class="nav-link" href="?f=home&m=keranjang">
               <i class="fas fa-shopping-cart"></i>
-              <span id="cart_count" class="bg-dark px-2 text-warning"><?= cart(); ?></span>
+              <span id="cart_count" class="bg-dark rounded-circle text-warning"><?= cart(); ?></span>
             </a>
           </li>
           <?php if (isset($_SESSION['pelanggan'])) : ?>

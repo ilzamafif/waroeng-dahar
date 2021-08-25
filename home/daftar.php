@@ -42,66 +42,62 @@ if (isset($_POST['insert'])) {
 
 </head>
 
-<body class=" bg-gradient-primary">
+<body>
+  <div class="container">
+    <div class="row justify-content-center" style="margin-top: 1vh;">
+      <div class="col-md-6">
+        <div class="card shadow p-1">
 
-  <div class="container mt-5">
-
-    <div class="card o-hidden border-0 shadow-lg my-5">
-      <div class="card-body p-0">
-        <!-- Nested Row within Card Body -->
-
-        <div class="row mt-3">
-          <div class="col-lg-5 ml-3">
-            <?php Flasher::flash(); ?>
+          <div class="row pt-4 ml-3">
+            <div class="col-lg-5">
+              <?php Flasher::flash(); ?>
+            </div>
           </div>
-        </div>
 
-        <div class="row justify-content-center">
-          <div class="col-lg-5 d-none d-lg-block"></div>
-          <div class="col-lg-6">
-            <div class="p-5">
-              <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+          <div class="card-header bg-transparent mb-0">
+            <h5 class="text-center">Create an <span class="font-wight-bold text-primary">ACCOUNT</span></h5>
+          </div>
+
+          <div class="card-body">
+            <form method="POST" action="">
+              <div class="form-group">
+                <input type="text" class="form-control mb-3" placeholder="name" name="nama">
               </div>
-              <form class="user" method="POST" action="">
-                <div class="form-group">
-                  <input type="text" class="form-control form-control-user" placeholder="name" name="nama">
-                </div>
 
-                <div class="form-group">
-                  <input type="text" class="form-control form-control-user" placeholder="alamat" name="alamat">
-                </div>
+              <div class="form-group">
+                <input type="text" class="form-control mb-3" placeholder="alamat" name="alamat">
+              </div>
 
-                <div class="form-group">
-                  <input type="email" class="form-control form-control-user" placeholder="Email Address" name="email">
-                </div>
+              <div class="form-group">
+                <input type="email" class="form-control mb-3" placeholder="Email Address" name="email">
+              </div>
 
-                <div class="form-group">
-                  <input type="telp" class="form-control form-control-user" placeholder="No Telp" name="telp">
+              <div class="form-group">
+                <input type="telp" class="form-control mb-3" placeholder="No Telp" name="telp">
+              </div>
+
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <input type="password" class="form-control mb-3" placeholder="Password" name="password">
                 </div>
-                <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="password" class="form-control form-control-user" placeholder="Password" name="password">
-                  </div>
-                  <div class="col-sm-6">
-                    <input type="password" class="form-control form-control-user" placeholder="Konfirmasi Password" name="konfirmasi">
-                  </div>
+                <div class="col-sm-6">
+                  <input type="password" class="form-control mb-3" placeholder="Konfirmasi Password" name="konfirmasi">
                 </div>
-                <button type="submit" class="btn btn-primary btn-user btn-block" name="insert">
+              </div>
+              
+              <div class="col d-grid">
+                <button type="submit" class="btn btn-primary btn-block" name="insert">
                   Register Account
                 </button>
-                <hr>
-              </form>
-              <hr>
-              <div class="text-center">
-                <a class="small" href="?f=home&m=masuk">Sudah Punya Akun? Login!</a>
+                <a href="?f=home&m=masuk" class="btn btn-primary btn-block mt-2">
+                  LOGIN!!
+                </a>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </body>
 

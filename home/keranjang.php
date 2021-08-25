@@ -32,7 +32,7 @@ if (!isset($_SESSION['pelanggan'])) {
     isi($id);
     header('Location: ?f=home&m=keranjang');
   } else {
-    keranjang();
+    // keranjang();
   }
 }
 
@@ -47,112 +47,104 @@ function isi($id)
   }
 }
 
-// detail barang
-function keranjang()
-{
-  global $db;
-
-  $total = 0;
-  $pph = 10;
-  echo '
-          <main id="main">
-            <div class="section-cart mt-5">
-              <div class="container">
-                <div class="row px-md-5 px-sm-3">
-                  <div class="col-md-7 mr-4 mt-5">
-                    <h6>My Cart</h6>
-                    <hr>
-                    <form action="keranjang.php" method="post" class="cart-items">';
-                    foreach ($_SESSION as $key => $value) {
-                      if ($key != 'pelanggan' && $key != 'id_pelanggan' && $key != 'user' && $key != 'level' && $key != 'id_user' && $key != 'alamat' && $key != 'telp') {
-                        $id = substr($key, 1);
-
-                        $sql = "SELECT * FROM tblmenu WHERE idmenu = $id";
-
-                        $row = $db->getAll($sql);
-
-                        foreach ($row as $r) {
-                          echo '<div class="row bg-white border rounded py-3 my-2">';
-
-                            echo '<div class="col-md-6">';
-                            echo '<img src="./frontend/images/data/' . $r['gambar'] . '" class="img-fluid" alt="'. $r['gambar'] .'" width: 100%;>';
-                            echo '</div>';
-
-                            echo '<div class="col-md-6">';
-                              echo '<h5 class="pt-2">' . $r['menu'] . '</h5>';
-                              echo '<h5 class="pt-2">' . number_format($r['harga'], 2) . '</h5>';
-                             
-                              
-                              echo '<div class="cart-loop mt-2 mb-1">';
-                                echo '<a href="?f=home&m=keranjang&kurang=' . $r['idmenu'] . '">';
-                                echo '<span style="font-size: 20px;"';
-                                echo '<i class="fas fa-minus"></i>';
-                                echo '</span>';
-                                echo '</a>';
-                                echo '<div class="">';
-                                echo '<input type="number" value="' . $value . '" min="1" class="form-control-sm" readonly>';
-                                echo '</div>';
-                                echo '<a href="?f=home&m=keranjang&tambah=' . $r['idmenu'] . '">';
-                                echo '<span style="font-size: 20px;"';
-                                echo '<i class="fas fa-plus"></i>';
-                                echo '</span>';
-                                echo '</a>';
-                              echo '</div>';
-                              
-                              echo '<div class="mt-2">';
-                                echo '<h5 class="">' .  number_format($r['harga'] * $value, 2) . '</h5>';
-                              echo '</div>';
-
-                               echo '<a href="?f=home&m=keranjang&hapus=' . $r['idmenu'] . '" class="btn btn-outline-danger">';
-                              echo '<i class="fas fa-trash-alt"></i>';
-                              echo '</a>';
-                            echo '</div>';
+?>
 
 
-                          echo '</div>';
+<main>
+  <section class="header">
+  <div class="container text-center" style="margin-top: 100px;">
+    <h3>your Cart</h3>  
+    <p>pastikan barang anda terbayar lunas</p>
+  </div>
+  </section>
 
-
-
-
-                          $total = $total + ($value * $r['harga']);
-                        }
-                      }
-                    }
-                    echo '<a href="?f=home&m=product" class="btn my-3 px-3 btn-block btn-warning">Kembali Belanja</a>';
-
-                    echo '
-                    </form>
+  <section class="checkout">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-lg-7">
+          <h4 class="mb-4">Your Item</h4>
+          <?php $total = 0; foreach ($_SESSION as $key => $value) : ?>
+            <?php if ($key != 'pelanggan' && $key != 'id_pelanggan' && $key != 'user' && $key != 'level' && $key != 'id_user' && $key != 'alamat' && $key != 'telp') : ?>
+              <?php $id = substr($key, 1); $items = $db->getAll('SELECT * FROM tblmenu WHERE idmenu =' . $id); ?>
+              <?php foreach ($items as $item): ?>
+                <div class="row mb-4 shadow-sm p-2">
+                  <div class="col-2">
+                    <img src="./frontend/images/data/<?= $item['gambar']; ?>" class="img-fluid">
                   </div>
-                  <div class="col-md-4 offside-md-1 border rounded my-5 bg-white h-25  mb-4">
-                    <div class="pt-4">
-                      <h6>Detail pembayaran</h6>
-                      <hr>
-                      <div class="row detail-pembayaran">
-                        <div class="col-md-6"><h6>Subtotal</h6>
-                          <h6>Pajak PPH 10%</h6>
-                          <hr>
-                          <h6>Total Pembayaran</h6>
-                        </div>
-                        <div class="col-md-6">
-                          <h6>' . number_format($total, 2) . '</h6>
-                          <h6 class="text-danger">' . number_format($total / $pph, 2) . '</h6>
-                          <hr>
-                          <h6>' .  number_format($total / $pph + $total, 2) . '</h6>
-                        </div>
-                      </div>';
-                      if (!empty($total)) {
-                        $opo = $total / $pph;
-                        $opo += $total;
-                        echo '
-                        <a href="?f=home&m=info&total=' . $opo . '" class="btn btn-primary my-3 px-3 btn-block">Checkout</a> ';
-                      }
-                      echo '
-                      </div>
-                      
+                  <div class="col-3 justify-content-center ">
+                    <h5 class="m-0"><?= $item['menu']; ?></h5 class="m-0">
+                    <p class="m-0"><?= number_format($item['harga'], 2) ?></p>
                   </div>
+                  <div class="col-4 text-right">
+                    <a href="?f=home&m=keranjang&kurang=<?= $item['idmenu'] ?>" class="btn btn-sm" style="background-color: #EAEAEA; color: rgb(160, 112, 112);">
+                      <i class="fas fa-minus-circle"></i>
+                    </a>
+                    <span class="mx-2"><?= $value; ?></span>
+                    <a href="?f=home&m=keranjang&tambah=<?= $item['idmenu'] ?>" class="btn btn-sm btn-primary">
+                      <i class="fas fa-plus-circle"></i>
+                    </a>
+                  </div>
+                  <div class="col-2 justify-content-center px-2">
+                    <p class="m-0"><?= number_format($item['harga'] * $value, 2) ?></p>
+                  </div>
+                  <div class="col-1 text-right">
+                    <a href="?f=home&m=keranjang&hapus=<?= $item['idmenu'] ?>" class="btn btn-sm btn-danger"  style="color: white;">
+                      <i class="fas fa-times-circle"></i>
+                    </a>
+                  </div>
+                </div>
+                <?php $total += ($value * $item['harga']); ?>
+              <?php endforeach; ?>
+            <?php endif; ?>
+          <?php endforeach; ?>
+          <div class="col d-grid mb-5">
+            <a href="?f=home&m=product" class="btn btn-block rounded-0 text-white btn-warning">Belanja Kembali</a>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 ms-4">
+          <div class="card">
+            <div class="card-body rounded-0 checkout-detail">
+              <h5 class="card-title">Inforamsi Biaya</h5>
+              <div class="row-mb-3 d-flex justify-content-between">
+                <div class="col">
+                  <h6 class="m-0">Subtotal</h6>
+                </div>
+                <div class="col">
+                  <h6 class="m-0 text-success"><?= $total ?></h6>
+                </div>
+              </div>
+              <hr>
+              <div class="row-mb-3">
+                <div class="col">
+                  <h6 class="m-0">pajak PPH</h6>
+                  <small style="color: #b7b7b7;">10 %</small>
+                </div>
+                <div class="col ">
+                  <h6 class="m-0 d-flex justify-content-end align-self-center text-success"><?= number_format($total / 10, 2) ?></h6>
+                </div>
+              </div>
+              <div class="row-mb-3">
+                <div class="col">
+                  <h6 class="m-0">Total Harga</h6>
+                </div>
+                <div class="col d-flex justify-content-end">
+                  <h6 class="m-0 align-self-center text-primary"><?= number_format($total / 10 + $total, 2) ?></h6>
                 </div>
               </div>
             </div>
-          </main>
-  ';
-}
+          </div>
+
+          <div class="row-mt-3">
+            <?php if(!empty($total)) : ?>
+              <div class="col d-grid">
+                <a href="?f=home&m=info&total=<?= $total / 10 + $total; ?>" class="btn btn-block rounded-0 text-white btn-primary">Checkout</a>
+                <div class="btn btn-block rounded-0" style="color: #333;">Cancel</div>
+              </div>
+            <?php endif; ?>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

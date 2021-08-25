@@ -1,53 +1,67 @@
 <?php
-$row = $db->getAll("SELECT * FROM tblmenu");
+$row = $db->getAll("SELECT * FROM tblkategori INNER JOIN tblmenu ON (tblmenu.idkategori = tblkategori.idkategori)");
+
 ?>
 
 <header>
   <div class="hero">
     <h1 class="title">Welcome To Waroeng Dahar</h1>
     <p class="tagline">Menyediakan makanan dan minuman dengan berbagai macam rasa</p>
-    <!-- <a href="#main" class="btn btn-outline-primary mx-auto btn-order ">Order Now</a> -->
   </div>
 </header>
 
 <main id="main">
   <div class="section-product">
-    <div class="mx-4 mt-2">
-      <div class="row py-5 text-center">
-        <?php if (!empty($row)) : ?>
-          <?php $i = 1;
-          foreach ($row as $data) : ?>
-            <div class="my-3 col-sm-6 col-md-3 col-lg-2">
-              <div class="card shadow">
-                <div>
-                  <img src="./frontend/images/data/<?= $data['gambar'] ?>" class="img-fluid card-img-top" alt="<?= $data['menu'] ?>">
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title"><?= $data['menu'] ?></h5>
-                  <span style="font-size: 20px; color: gold;">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                  </span>
-                  <h5>
-                    <span class="price"><?php echo number_format($data['harga'], 2); ?></span>
-                  </h5>
-                  <a href="?f=home&m=keranjang&id=<?= $data['idmenu'] ?>" type="submit" name="add" class="btn btn-outline-success btn-sm my-2 mr-2"><i class="fas fa-shopping-cart"></i> add cart </a>
-
-                  <a href="?f=home&m=detail&id=<?= $data['idmenu'] ?>" class="btn btn-outline-success btn-sm my-2 mr-2">Lihat Detail</a>
-                </div>
+    <div class="row py-5 text-left mx-2">
+      <?php if (!empty($row)) : ?>
+        <?php $i = 1;
+        foreach ($row as $data) : ?>
+          <div class="my-3 col-6 col-sm-4 col-md-3 col-lg-2">
+            <div class="card shadow">
+              <div>
+                <img src="./frontend/images/data/<?= $data['gambar'] ?>" class="img-fluid card-img-top" alt="<?= $data['menu'] ?>" style="width: 188px; height: 188px;">
+              </div>
+              <div class="card-body">
+                <h5 class="card__title"><?= $data['menu'] ?></h5>
+                <p class="card__category badge bg-success badge-sm">
+                  <?= $data['kategori'] ?>
+                </p>
+                <h5 class="card__price">RP. <?php echo number_format($data['harga'], 2); ?></h5>
+                <a href="?f=home&m=keranjang&id=<?= $data['idmenu'] ?>" class="btn btn-outline-primary btn-sm btn-block">add to cart</a>
               </div>
             </div>
-          <?php endforeach; ?>
-        <?php endif; ?>
-      </div>
+          </div>
+        <?php endforeach; ?>
+      <?php endif; ?>
     </div>
   </div>
+
+  <section class="section-method">
+    <h3 class="text-center mb-4">Tutorial mesen makanan</h3>
+    <div class="container">
+      <div class="row mt-4">
+        <div class="col-12 col-md-4 col-lg-3">
+          <h4>Pilih Menu</h4>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. In possimus odit dolor nostrum nihil excepturi corporis fugit nobis, error quia labore qui nesciunt doloremque ducimus libero distinctio minima inventore voluptatum.</p>
+        </div>
+        <div class="col-12 col-md-4 col-lg-3">
+          <h4>masukkan keranjang & checkout</h4>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. In possimus odit dolor nostrum nihil excepturi corporis fugit nobis, error quia labore qui nesciunt doloremque ducimus libero distinctio minima inventore voluptatum.</p>
+        </div>
+        <div class="col-12 col-md-4 col-lg-3">
+          <h4>cek alamat</h4>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. In possimus odit dolor nostrum nihil excepturi corporis fugit nobis, error quia labore qui nesciunt doloremque ducimus libero distinctio minima inventore voluptatum.</p>
+        </div>
+        <div class="col-12 col-md-4 col-lg-3">
+          <h4>sukses</h4>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. In possimus odit dolor nostrum nihil excepturi corporis fugit nobis, error quia labore qui nesciunt doloremque ducimus libero distinctio minima inventore voluptatum.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer class="section-footer mt-5 mb-4 border-top">
+<footer class="section-footer mt-5 mb-4 border-top bg-dark text-light">
   <div class="container pt-5 pb-5">
     <div class="row justify-content-center">
       <div class="col-12">

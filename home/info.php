@@ -26,8 +26,10 @@ if (isset($_GET['total'])) {
             <label for="nama">No Telepon</label>
             <input type="text" name="nama" class="form-control" value="<?= $_SESSION['telp'] ?>" id="nama">
           </div>
-
-          <a href="?f=home&m=checkout&total=<?= $total ?>" class="btn btn-primary" type="submit" name="insert">Beli</a>
+          
+          <div class="col d-grid">
+            <a href="?f=home&m=checkout&total=<?= $total ?>" class="btn btn-primary" type="submit" name="insert">Beli</a>
+          </div>
         </div>
       </div>
     </div>
