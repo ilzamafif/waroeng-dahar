@@ -139,7 +139,7 @@ function isi($id)
             <?php if(!empty($total)) : ?>
               <div class="col d-grid">
                 <a href="?f=home&m=info&total=<?= $total / 10 + $total; ?>" class="btn btn-block rounded-0 text-white btn-primary">Checkout</a>
-                <div class="btn btn-block rounded-0" style="color: #333;">Cancel</div>
+                <a href="?f=home&m=product" class="btn btn-block rounded-0" style="color: #333;">Cancel</a>
               </div>
             <?php endif; ?>
           </div>

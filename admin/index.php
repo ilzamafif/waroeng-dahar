@@ -36,11 +36,16 @@ for($bulan = 1; $bulan < 13; $bulan++)
 
 <head>
 
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="Waroeng Dahar">
+  <meta name="description" content="Website jual makanan, food ordering, POS, ">
+  <title>Dashboard Waroeng Dahar</title>
+  <link rel="shortcut icon" href="../frontend/images/favicon/favicon.png" type="image/x-icon">
+  <link rel="icon" href="../frontend/images/favicon/favicon.png" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../frontend/images/icons/icon-192x192.png">
+  <meta name="theme-color" content="#3074FF"/>
 
   <title>Waroeng Dahar - Dashboard</title>
 
