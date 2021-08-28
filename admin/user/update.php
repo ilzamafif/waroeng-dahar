@@ -15,7 +15,7 @@ if (isset($_GET['id'])) {
   $sql = "UPDATE tbluser SET status=$aktif WHERE iduser =$id";
   $db->runSql($sql);
 
-  Flasher::setFlash('berhasil', 'di update', 'success');
+  Flasher::setFlash('berhasil', 'di update', 'user', 'success');
 
   echo "
         <script>

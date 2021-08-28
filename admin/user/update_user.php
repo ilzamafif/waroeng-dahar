@@ -16,7 +16,7 @@ if (isset($_POST['insert'])) {
   if ($password === $konfirmasi) {
     $sql = "UPDATE `tbluser` SET `nama`='$user', `email`='$email', `password`='$password' WHERE iduser =$id";
     $db->runSql($sql);
-    Flasher::setFlash('berhasil', 'di update', 'success');
+    Flasher::setFlash('berhasil', 'di update', 'user', 'success');
 
     echo "
         <script>
@@ -24,7 +24,7 @@ if (isset($_POST['insert'])) {
         </script>
       ";
   } else {
-    Flasher::setFlash('passowrd', 'tidak sesuai', 'danger');
+    Flasher::setFlash('passowrd', 'tidak sesuai', 'user', 'danger');
 
     echo "
         <script>

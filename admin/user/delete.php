@@ -6,7 +6,7 @@ if (isset($_GET['id'])) {
   $sql = "DELETE FROM tbluser WHERE iduser = $id";
   $db->runSql($sql);
 
-  Flasher::setFlash('berhasil', 'di hapus', 'success');
+  Flasher::setFlash('berhasil', 'di hapus', 'user', 'success');
 
   echo "
         <script>

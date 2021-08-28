@@ -10,7 +10,7 @@ if (isset($_POST['insert'])) {
   if ($password === $konfirmasi) {
     $sql = "INSERT INTO `tbluser` VALUES (NULL, '$user', '$email', '$password', ' $level', '1');";
     $db->runSql($sql);
-    Flasher::setFlash('berhasil', 'di tambahkan', 'success');
+    Flasher::setFlash('berhasil', 'di tambahkan', 'user', 'success');
 
     echo "
         <script>
