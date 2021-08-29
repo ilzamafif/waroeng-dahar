@@ -1,5 +1,7 @@
 <?php
-$row = $db->getAll("SELECT * FROM vorder");
+$viewOrder = "SELECT tblorder.idorder, tblorder.idpelanggan, tblorder.tglorder, tblorder.total, tblorder.bayar, tblorder.kembali, tblorder.status, tblpelanggan.pelanggan, tblpelanggan.alamat, tblpelanggan.telp, tblpelanggan.email, tblpelanggan.password, tblpelanggan.aktif
+    FROM tblpelanggan INNER JOIN tblorder ON tblpelanggan.idpelanggan = tblorder.idpelanggan;";
+$row = $db->getAll($viewOrder);
 $days = $db->getAll("SELECT tglorder,COUNT(*) AS jumlah_harian FROM tblorder GROUP BY tglorder;");
 $weeks = $db->getAll("SELECT YEARWEEK(tglorder) AS tahun_minggu,COUNT(*) AS jumlah_mingguan FROM tblorder GROUP BY YEARWEEK(tglorder);");
 

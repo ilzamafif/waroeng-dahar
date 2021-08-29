@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
 
   $sql = "UPDATE `tblorder` SET `status` =$aktif WHERE `tblorder`.`idorder` = $id";
   $db->runSql($sql);
-  Flasher::setFlash('berhasil', 'di update', 'success');
+  Flasher::setFlash('berhasil', 'di update', 'pembayaran', 'success');
   echo
   "
       <script>

@@ -11,7 +11,7 @@ if (isset($_POST["login"])) {
 
   $count = $db->rowCount($sql);
   if ($count == 0) {
-    Flasher::setFlash('Passowrd', 'Tidak sesuai', 'warning');
+    Flasher::setFlash('Passowrd', 'Tidak sesuai', '', 'warning');
   } else {
     $sql = "SELECT * FROM `tblpelanggan` WHERE email = '$email' AND `password` = '$password'";
     $row = $db->getItem($sql);
@@ -45,9 +45,9 @@ if (isset($_POST["login"])) {
       <div class="col-md-4">
         <div class="card">
 
-          <div class="row pt-4 ml-3">
-            <div class="col-lg-5">
-              <?php Flasher::flash(); ?>
+           <div class="row mt-3">
+            <div class="col-lg-6">
+              <?php Flasher::flash5(); ?>
             </div>
           </div>
 

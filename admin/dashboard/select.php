@@ -1,5 +1,5 @@
 <?php
-$sum = $db->getAll("SELECT SUM(total) AS sum FROM vorder WHERE tglorder")[0];
+$sum = $db->getAll("SELECT SUM(total) AS sum FROM tblorder WHERE tglorder")[0];
 $menu = $db->rowCount("SELECT idmenu FROM tblmenu");
 $order = $db->rowCount("SELECT idorder FROM tblorder");
 $orderPending = $db->rowCount("SELECT idorder FROM tblorder WHERE `status` = 0");

@@ -7,14 +7,18 @@ $mpdf = new \Mpdf\Mpdf();
 if (isset($_GET['dariTgl']) && isset($_GET['smpTgl'])) {
   $tgl_dari = $_GET['dariTgl'];
   $tgl_sampai = $_GET['smpTgl'];
-  $row = $db->getAll("SELECT * FROM vorder WHERE tglorder BETWEEN '$tgl_dari' AND '$tgl_sampai'");
-  $sum = $db->getAll("SELECT SUM(total) AS sum FROM vorder WHERE tglorder BETWEEN '$tgl_dari' AND '$tgl_sampai'")[0];
+    $viewOrder = "SELECT tblorder.idorder, tblorder.idpelanggan, tblorder.tglorder, tblorder.total, tblorder.bayar, tblorder.kembali, tblorder.status, tblpelanggan.pelanggan, tblpelanggan.alamat, tblpelanggan.telp, tblpelanggan.email, tblpelanggan.password, tblpelanggan.aktif
+  FROM tblpelanggan INNER JOIN tblorder ON (tblpelanggan.idpelanggan = tblorder.idpelanggan) WHERE tglorder BETWEEN '$tgl_dari' AND '$tgl_sampai';";
+  $row = $db->getAll($viewOrder);
+  $sum = $db->getAll("SELECT SUM(total) AS sum FROM tblorder")[0];
   $c = 'Cetak Order<br>' . date("d F Y ", strtotime($tgl_dari)) . ' sampai ' . date("d F Y ", strtotime($tgl_sampai));
 }else{
   $c = 'Cetak Order<br>';
   $totals = $db->getItem("SELECT SUM(total) AS totalorder FROM tblorder;");
-  $row = $db->getAll("SELECT * FROM `vorder`");
-  $sum = $db->getAll("SELECT SUM(total) AS sum FROM vorder")[0];
+  $vorder = "SELECT tblorder.idorder, tblorder.idpelanggan, tblorder.tglorder, tblorder.total, tblorder.bayar, tblorder.kembali, tblorder.status, tblpelanggan.pelanggan, tblpelanggan.alamat, tblpelanggan.telp, tblpelanggan.email, tblpelanggan.password, tblpelanggan.aktif
+  FROM tblpelanggan INNER JOIN tblorder ON (tblpelanggan.idpelanggan = tblorder.idpelanggan);";
+  $row = $db->getAll($vorder);
+  $sum = $db->getAll("SELECT SUM(total) AS sum FROM tblorder")[0];
 }
 $content = '
 <div style="font-family: sans-serif;">

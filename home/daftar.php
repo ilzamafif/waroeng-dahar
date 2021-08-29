@@ -4,7 +4,7 @@ if (isset($_POST['insert'])) {
   $user = strtolower(stripslashes($_POST['nama']));
   $alamat  = strtolower($_POST['alamat']);
   $email  = strtolower($_POST['email']);
-  $telp = htmlspecialchars($_POST['telp']);
+  $telp = $_POST['telp'];
   $password = hash('sha256', $_POST['password']);
   $konfirmasi = hash('sha256', $_POST['konfirmasi']);
 
@@ -72,7 +72,7 @@ if (isset($_POST['insert'])) {
               </div>
 
               <div class="form-group">
-                <input type="telp" class="form-control mb-3" placeholder="No Telp" name="telp">
+                <input type="number" class="form-control mb-3" placeholder="No Telp" name="telp">
               </div>
 
               <div class="form-group row">

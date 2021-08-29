@@ -33,12 +33,15 @@ $awalData = ($jumlahDataPerHalaman * $halamanAktif) - $jumlahDataPerHalaman;
   if (isset($_POST['filter'])) {
     $tgl_dari = $_POST['tgl_dari'];
     $tgl_sampai = $_POST['tgl_sampai'];
-    $row = $db->getAll("SELECT * FROM vorder WHERE tglorder BETWEEN '$tgl_dari' AND '$tgl_sampai'");
-    $sum = $db->getAll("SELECT SUM(total) AS sum FROM vorder WHERE tglorder BETWEEN '$tgl_dari' AND '$tgl_sampai'")[0];
+    $viewOrder = "SELECT tblorder.idorder, tblorder.idpelanggan, tblorder.tglorder, tblorder.total, tblorder.bayar, tblorder.kembali, tblorder.status, tblpelanggan.pelanggan, tblpelanggan.alamat, tblpelanggan.telp, tblpelanggan.email, tblpelanggan.password, tblpelanggan.aktif
+    FROM tblpelanggan INNER JOIN tblorder ON tblpelanggan.idpelanggan = tblorder.idpelanggan WHERE tglorder BETWEEN '$tgl_dari' AND '$tgl_sampai';";
+    $row = $db->getAll($viewOrder);
+    $sum = $db->getAll("SELECT SUM(total) AS sum FROM tblorder")[0];
   } else {
-    $sql = "SELECT * FROM `vorder` ORDER BY tglorder";
-    $row = $db->getAll($sql);
-    $sum = $db->getAll("SELECT SUM(total) AS sum FROM vorder")[0];
+    $vorder = "SELECT tblorder.idorder, tblorder.idpelanggan, tblorder.tglorder, tblorder.total, tblorder.bayar, tblorder.kembali, tblorder.status, tblpelanggan.pelanggan, tblpelanggan.alamat, tblpelanggan.telp, tblpelanggan.email, tblpelanggan.password, tblpelanggan.aktif
+    FROM tblpelanggan INNER JOIN tblorder ON tblpelanggan.idpelanggan = tblorder.idpelanggan ORDER BY tglorder;";
+    $row = $db->getAll($vorder);
+    $sum = $db->getAll("SELECT SUM(total) AS sum FROM tblorder")[0];
   }
 
   ?>

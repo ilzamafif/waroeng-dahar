@@ -9,7 +9,9 @@ if (isset($_GET['id'])) {
 
 $row = $db->getAll("SELECT * FROM tblorderdetail o inner join tblmenu p on o.idmenu = p.idmenu  where idorder =" . $_GET['id']);
 $sumItem = $db->getAll("SELECT SUM(jumlah * hargajual) AS sum FROM tblorderdetail where idorder =" . $_GET['id']);
-$rows = $db->getAll("SELECT * FROM vorder WHERE idorder = $id");
+$viewOrder = "SELECT tblorder.idorder, tblorder.idpelanggan, tblorder.tglorder, tblorder.total, tblorder.bayar, tblorder.kembali, tblorder.status, tblpelanggan.pelanggan, tblpelanggan.alamat, tblpelanggan.telp, tblpelanggan.email, tblpelanggan.password, tblpelanggan.aktif
+    FROM tblpelanggan INNER JOIN tblorder ON tblpelanggan.idpelanggan = tblorder.idpelanggan WHERE idorder = $id;";
+$rows = $db->getAll($viewOrder);
 
 $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => [90, 236]]);
 $content = '
