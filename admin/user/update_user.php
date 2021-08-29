@@ -24,7 +24,7 @@ if (isset($_POST['insert'])) {
         </script>
       ";
   } else {
-    Flasher::setFlash('passowrd', 'tidak sesuai', 'user', 'danger');
+    Flasher::setFlash('gagal', 'di update', 'user', 'danger');
 
     echo "
         <script>

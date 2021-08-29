@@ -6,7 +6,7 @@ if (isset($_GET['id'])) {
   $sql = "DELETE FROM tblpelanggan WHERE idpelanggan = $id";
   $db->runSql($sql);
 
-  Flasher::setFlash('berhasil', 'di hapus', 'success');
+  Flasher::setFlash('berhasil', 'di hapus', 'pelanggan', 'success');
 
   echo "
         <script>

@@ -10,11 +10,10 @@ if (isset($_POST['insert'])) {
 
   if ($password === $konfirmasi) {
     $password = $password;
-    $sql = "INSERT INTO `tblpelanggan` VALUES (NULL, '$user', '$alamat', '$telp', '$email', '$password', '1');";
-    $db->runSql($sql);
-    Flasher::setFlash('Berhasil', 'Silahkan login', 'success');
+    $db->runSql("INSERT INTO `tblpelanggan` (`idpelanggan`, `pelanggan`, `alamat`, `telp`, `email`, `password`, `aktif`) VALUES ('', '$user', '$alamat', '$telp', '$email', '$password', '1');");
+    Flasher::setFlash('Berhasil didaftarkan', 'Silahkan login', 'pelanggan', 'success');
   } else {
-    Flasher::setFlash('Passowrd', 'Tidak sesuai', 'warning');
+    Flasher::setFlash('pelanggan', 'Tidak sesuai', 'password', 'warning');
   }
 
 }
@@ -48,9 +47,9 @@ if (isset($_POST['insert'])) {
       <div class="col-md-6">
         <div class="card shadow p-1">
 
-          <div class="row pt-4 ml-3">
-            <div class="col-lg-5">
-              <?php Flasher::flash(); ?>
+          <div class="row mt-3">
+            <div class="col-lg text-center">
+              <?php Flasher::flash5(); ?>
             </div>
           </div>
 
