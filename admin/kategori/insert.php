@@ -7,7 +7,7 @@ if (isset($_POST['btn-kategori'])) {
 
   $db->runSql($sql);
 
-  Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+  Flasher::setFlash('berhasil', 'ditambahkan', 'Kategori', 'success');
 
   echo "
         <script>

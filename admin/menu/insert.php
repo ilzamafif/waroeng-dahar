@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
     $sql = "INSERT INTO `tblmenu` VALUES ('', $id, '$menu', '$gambar', $harga);";
     move_uploaded_file($temp, '../frontend/images/data/' . $gambar);
     $db->runSql($sql);
-    Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+    Flasher::setFlash('berhasil', 'ditambahkan', 'Menu', 'success');
 
     echo "
         <script>

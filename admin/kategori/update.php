@@ -13,7 +13,7 @@ if (isset($_POST['btn-kategori'])) {
   $sql = "UPDATE `tblkategori` SET `kategori` = '$kategori' WHERE idkategori = $id";
   $db->runSql($sql);
 
-  Flasher::setFlash('berhasil', 'diUpdate', 'success');
+  Flasher::setFlash('berhasil', 'diUpdate', 'Kategori', 'success');
 
   echo "
         <script>

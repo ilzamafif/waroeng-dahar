@@ -5,7 +5,7 @@ if (isset($_GET['id'])) {
 
   $sql = "DELETE FROM tblkategori WHERE idkategori = $id";
   $db->runSql($sql);
-  Flasher::setFlash('berhasil', 'dihapus', 'success');
+  Flasher::setFlash('berhasil', 'dihapus', 'Kategori', 'success');
 
   echo "
         <script>

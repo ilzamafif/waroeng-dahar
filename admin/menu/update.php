@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
   $sql = "UPDATE `tblmenu` SET `idkategori` = '$idkategori', `menu` = '$menu', `gambar` = '$gambar', `harga` = '$harga' WHERE `tblmenu`.`idmenu` = $id;";
   $db->runSql($sql);
 
-  Flasher::setFlash('berhasil', 'di update', 'success');
+  Flasher::setFlash('berhasil', 'di update', 'Menu', 'success');
 
   echo "
         <script>
