@@ -6,6 +6,8 @@ $orderPending = $db->rowCount("SELECT idorder FROM tblorder WHERE `status` = 0")
 $pelanggan = $db->getAll("SELECT email FROM tblpelanggan");
 ?>
 
+<?php  if($_SESSION['level'] == 'owner') : ?>
+
 <!-- Content Row -->
 <div class="row">
 
@@ -158,3 +160,5 @@ $pelanggan = $db->getAll("SELECT email FROM tblpelanggan");
 </body>
 
 </html>
+
+<?php endif; ?>

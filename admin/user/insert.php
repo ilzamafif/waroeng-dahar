@@ -61,7 +61,7 @@ if (isset($_POST['insert'])) {
           <label for="level">Level</label>
           <select name="level" id="level" class="custom-select mb-3" style="width: auto;">
             <option value="owner">Owner</option>
-            <option value="karyawan">karyawan</option>
+            <option value="employee">karyawan</option>
           </select>
         </div>
 

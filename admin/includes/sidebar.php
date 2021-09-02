@@ -9,13 +9,13 @@
   <!-- Divider -->
   <hr class="sidebar-divider my-0">
 
-  <?php // if($_SESSION['level'] == 'owner') :?>
+  <?php  if($_SESSION['level'] == 'owner') : ?>
     <li class="nav-item active">
       <a class="nav-link" href="?f=dashboard&m=select">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
     </li>
-  <?php // endif; ?>
+  <?php  endif; ?>
   <li class="nav-item">
     <a class="nav-link" href="?f=kategori&m=select">
       <i class="fas fa-fw fa-chart-area"></i>
@@ -42,7 +42,7 @@
 
   <!-- Nav Item - Pages Collapse Menu -->
 
-  <?php // if($_SESSION['level'] == 'owner') : ?>
+  <?php if($_SESSION['level'] == 'owner') : ?>
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menegement_user" aria-expanded="true" aria-controls="menegement_user">
           <i class="fas fa-fw fa-folder"></i>
@@ -55,7 +55,7 @@
           </div>
         </div>
       </li>
-  <?php // endif;?>
+  <?php  endif;?>
   
 
   <li class="nav-item">

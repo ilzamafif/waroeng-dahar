@@ -19,11 +19,17 @@ if (isset($_POST["login"])) {
   } else {
     $row = $db->getItem($sql);
 
-    $_SESSION['user'] = $row['email'];
-    $_SESSION['level'] = $row['level'];
-    $_SESSION['id_user'] = $row['iduser'];
+    $_SESSION["user"] = $row["email"];
+    $_SESSION["level"] = $row["level"];
+    $_SESSION["id_user"] = $row["iduser"];
 
-    header("Location: index.php?f=kategori&m=select");
+    if ($_SESSION["level"] = $row["level"] == "owner")
+    {
+      header("Location: index.php?f=dashboard&m=select");
+    } else if ($_SESSION["level"] = $row["level"] == "employee")
+    {
+      header("Location: index.php?f=kategori&m=select");
+    }
   }
 }
 
