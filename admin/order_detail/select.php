@@ -5,7 +5,7 @@ if (isset($_GET['id'])) {
 }
 
 $row = $db->getAll("SELECT * FROM tblorderdetail INNER JOIN tblmenu ON tblorderdetail.idmenu = tblmenu.idmenu where idorder =" . $_GET['id']);
-$sumItem = $db->getAll("SELECT SUM(jumlah * hargajual) AS sum FROM tblorderdetail where idorder =" . $_GET['id']);
+$sumItem = $db->getAll("SELECT SUM(jumlah * harga) AS sum FROM tblorderdetail where idorder =" . $_GET['id']);
 $viewOrder = "SELECT tblorder.idorder, tblorder.idpelanggan, tblorder.tglorder, tblorder.total, tblorder.bayar, tblorder.kembali, tblorder.status, tblpelanggan.pelanggan, tblpelanggan.alamat, tblpelanggan.telp, tblpelanggan.email, tblpelanggan.password, tblpelanggan.aktif
     FROM tblpelanggan INNER JOIN tblorder ON tblpelanggan.idpelanggan = tblorder.idpelanggan WHERE idorder = $id;";
 $rows = $db->getAll($viewOrder);
@@ -41,13 +41,13 @@ foreach ($rows as $r) {
             <?php if (!empty($row)) : ?>
               <?php $i = 1;
               foreach ($row as $data) : ?>
-                <?php $subtot = $data['jumlah'] * $data['hargajual']; ?>
+                <?php $subtot = $data['jumlah'] * $data['harga']; ?>
                 <tr>
                   <td><?= $i++; ?></td>
                   <td><?= $data['menu'] ?></td>
                   <td><?= $data['jumlah'] ?></td>
-                  <td><?= number_format($data['hargajual'], 2, ',', '.') ?></td>
-                  <td><?= number_format($data['hargajual'] * $data['jumlah'], 2, ',', '.') ?></td>
+                  <td><?= number_format($data['harga'], 2, ',', '.') ?></td>
+                  <td><?= number_format($data['harga'] * $data['jumlah'], 2, ',', '.') ?></td>
                 </tr>
               <?php endforeach; ?>
               <tr>
