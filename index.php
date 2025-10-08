@@ -25,11 +25,14 @@ function cart()
   foreach ($_SESSION as $key => $value) {
     if ($key != 'pelanggan' && $key != 'id_pelanggan' && $key != 'user' && $key != 'level' && $key != 'id_user' && $key != 'alamat' && $key != 'telp') {
       $id = substr($key, 1);
-      $sql = "SELECT * FROM tblmenu WHERE idmenu = $id";
-      $row =  $db->getAll($sql);
+      // Only proceed if $id is numeric to avoid SQL errors
+      if(is_numeric($id)) {
+        $sql = "SELECT * FROM tblmenu WHERE idmenu = " . (int)$id;
+        $row =  $db->getAll($sql);
 
-      foreach ($row as $r) {
-        $cart++;
+        foreach ($row as $r) {
+          $cart++;
+        }
       }
     }
   }
@@ -45,7 +48,7 @@ function cart()
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="keywords" content="Waroeng Dahar">
+  <meta name="keywords" content="Website POS">
   <meta name="description" content="Website jual makanan, food ordering, POS, ">
   <title>Waroeng Dahar</title>
   <link rel="shortcut icon" href="./frontend/images/favicon/favicon.png" type="image/x-icon">
@@ -81,7 +84,7 @@ function cart()
            <li class="nav-item">
             <a class="nav-link" href="?f=home&m=keranjang">
               <i class="fas fa-shopping-cart"></i>
-              <span id="cart_count" class="bg-dark rounded-circle text-warning"><?= cart(); ?></span>
+              <span id="cart_count" class="bg-dark rounded-circle text-warning"><?php cart(); ?></span>
             </a>
           </li>
           <?php if (isset($_SESSION['pelanggan'])) : ?>
