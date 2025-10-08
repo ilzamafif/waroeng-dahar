@@ -10,7 +10,7 @@ if (isset($_POST['insert'])) {
 
   if ($password === $konfirmasi) {
     $password = $password;
-    $db->runSql("INSERT INTO `tblpelanggan` (`idpelanggan`, `pelanggan`, `alamat`, `telp`, `email`, `password`, `aktif`) VALUES ('', '$user', '$alamat', '$telp', '$email', '$password', '1');");
+    $db->runSql("INSERT INTO `tblpelanggan` (`pelanggan`, `alamat`, `telp`, `email`, `password`, `aktif`) VALUES ('$user', '$alamat', '$telp', '$email', '$password', '1');");
     Flasher::setFlash('Berhasil didaftarkan', 'Silahkan login', 'pelanggan', 'success');
   } else {
     Flasher::setFlash('pelanggan', 'Tidak sesuai', 'password', 'warning');

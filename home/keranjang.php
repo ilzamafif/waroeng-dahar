@@ -65,7 +65,14 @@ function isi($id)
           <h4 class="mb-4">Your Item</h4>
           <?php $total = 0; foreach ($_SESSION as $key => $value) : ?>
             <?php if ($key != 'pelanggan' && $key != 'id_pelanggan' && $key != 'user' && $key != 'level' && $key != 'id_user' && $key != 'alamat' && $key != 'telp') : ?>
-              <?php $id = substr($key, 1); $items = $db->getAll('SELECT * FROM tblmenu WHERE idmenu =' . $id); ?>
+              <?php 
+                $id = substr($key, 1); 
+                if(is_numeric($id)) { 
+                  $items = $db->getAll('SELECT * FROM tblmenu WHERE idmenu = ' . $id); 
+                } else {
+                  $items = array(); // Initialize as empty array if id is not numeric
+                }
+              ?>
               <?php foreach ($items as $item): ?>
                 <div class="row mb-4 shadow-sm p-2">
                   <div class="col-2">

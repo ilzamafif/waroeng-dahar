@@ -58,18 +58,19 @@ function insertOrderDetail($idorder)
   foreach ($_SESSION as $key => $value) {
     if ($key != 'pelanggan' && $key != 'id_pelanggan' && $key != 'user' && $key != 'level' && $key != 'id_user' && $key != 'alamat' && $key != 'telp') {
       $id = substr($key, 1);
-      $sql = "SELECT * FROM tblmenu WHERE idmenu = $id";
+      if(is_numeric($id)) {
+        $sql = "SELECT * FROM tblmenu WHERE idmenu = $id";
+        $row =  $db->getAll($sql);
+        // echo '<pre>';
+        // print_r($row);
+        // echo '</pre>';
 
-      $row =  $db->getAll($sql);
-      // echo '<pre>';
-      // print_r($row);
-      // echo '</pre>';
-
-      foreach ($row as $r) {
-        $id_menu = $r['idmenu'];
-        $harga = $r['harga'];
-        $sql = "INSERT INTO tblorderdetail VALUES('', $idorder, $id_menu, $value, $harga)";
-        $db->runSql($sql);
+        foreach ($row as $r) {
+          $id_menu = $r['idmenu'];
+          $harga = $r['harga'];
+          $sql = "INSERT INTO tblorderdetail (idorder, idmenu, jumlah, harga) VALUES($idorder, $id_menu, $value, $harga)";
+          $db->runSql($sql);
+        }
       }
     }
   }

@@ -48,6 +48,10 @@ class DB
   public function runSql($sql)
   {
     $result = mysqli_query($this->koneksi, $sql);
+    if (!$result) {
+      throw new mysqli_sql_exception(mysqli_error($this->koneksi));
+    }
+    return $result;
   }
 
    public function getDate($tgl1, $tgl2)
